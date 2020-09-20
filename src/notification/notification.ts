@@ -10,6 +10,7 @@ const notifications = Config.notifications;
 
 export function sendNotification(cartUrl: string) {
 	if (notifications.email.username && notifications.email.password) {
+		playSound();
 		sendEmail(cartUrl);
 	}
 
@@ -30,9 +31,5 @@ export function sendNotification(cartUrl: string) {
 
 	if (notifications.pushover.token && notifications.pushover.user) {
 		sendPushoverNotification(cartUrl);
-	}
-
-	if (notifications.playSound === 'true') {
-		playSound();
 	}
 }
